@@ -1,0 +1,22 @@
+{
+    "name": "wubmeister/wublish",
+    "description": "Wublish, a website publishing tool",
+    "type": "project",
+    "license": "GPL-3",
+    "authors": [
+        {
+            "name": "Wubbo Bos",
+            "email": "wubbo@wubbobos.nl",
+            "homepage": "http://wubbobos.nl",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "laminas/laminas-diactoros": "^2.3"
+    }
+}
