@@ -2,6 +2,7 @@
     "name": "wubmeister/wublish",
     "description": "Wublish, a website publishing tool",
     "type": "project",
+    "version": "0.0.1",
     "license": "GPL-3",
     "authors": [
         {
