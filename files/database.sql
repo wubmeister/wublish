@@ -17,6 +17,7 @@ CREATE TABLE page (
     page_type VARCHAR(32) NOT NULL DEFAULT 'page',
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(128),
+    url VARCHAR(128),
     settings MEDIUMTEXT,
     revision INT NOT NULL DEFAULT 1,
     is_finalized TINYINT(1),
