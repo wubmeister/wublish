@@ -8,8 +8,19 @@ use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Psr\Http\Message\ServerRequestInterface;
 
+/**
+ * Login View Controller
+ *
+ * @author Wubbo Bos <wubbo@addnoise.nl>
+ */
 class Login
 {
+    /**
+     * Shows the login screen and in case of a POST request, tries to authenticate the user
+     *
+     * @param ServerRequestInterface $request The request
+     * @return ResponseInterface The response
+     */
     public function __invoke(ServerRequestInterface $request)
     {
         $values = [];
