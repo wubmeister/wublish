@@ -2,11 +2,16 @@
 
 use Laminas\Diactoros\ServerRequestFactory;
 use App\ViewController\Login;
+use App\ViewController\Logout;
+use App\ViewController\Frontend;
+use Laminas\Diactoros\Response\HtmlResponse;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-    $r->addRoute('GET', '/login', Login::class);
+    $r->addRoute([ 'GET', 'POST' ], '/login', Login::class);
+    $r->addRoute([ 'GET', 'POST' ], '/logout', Logout::class);
+    $r->addRoute([ 'GET', 'POST' ], '/', Frontend::class);
 });
 
 $request = ServerRequestFactory::fromGlobals(
@@ -21,14 +26,12 @@ $routeInfo = $dispatcher->dispatch($request->getMethod(), $request->getUri()->ge
 switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::NOT_FOUND:
         // ... 404 Not Found
-        http_response_code(404);
-        echo '404 Not Found';
+        $response = new HtmlResponse('<h1>404 Not Found</h1>', 404);
         break;
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         $allowedMethods = $routeInfo[1];
         // ... 405 Method Not Allowed
-        http_response_code(405);
-        echo '405 Method Not Allowed';
+        $response = new HtmlResponse('<h1>405 Method Not Allowed</h1>', 405);
         break;
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];

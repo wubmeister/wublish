@@ -11,11 +11,13 @@ class Db
 {
     const LIMIT_MAX = 18446744073709551615;
 
+    private static $pdo;
+
     protected static function getPdo()
     {
         if (!self::$pdo) {
             $config = Config::get("Db");
-            self::$pdo = new PDO("mysql:host={$config->host},dbname={$config->dbname}", $config->username, $config->password);
+            self::$pdo = new PDO("mysql:host={$config->host};dbname={$config->dbname}", $config->username, $config->password);
         }
 
         return self::$pdo;
@@ -45,7 +47,7 @@ class Db
     public static function execute($sql, array $params = [])
     {
         $stmt = self::prepare($sql, $params);
-        if (!$stmt->exec()) {
+        if (!$stmt->execute()) {
             $err = $stmt->errorInfo();
             throw new DbException($err[2]);
         }

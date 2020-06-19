@@ -3,8 +3,57 @@
 <head>
     <meta charset="utf-8"/>
     <title>Login</title>
+
+    <style>
+    *, :before, :after {
+        box-sizing: border-box;
+    }
+    h1 {
+        margin-top: 0;
+    }
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: 1rem auto;
+        padding: 2rem;
+        background-color: #fafafa;
+    }
+    label {
+        display: block;
+    }
+    input {
+        display: block;
+        width: 100%;
+    }
+    .field {
+        margin: 1rem 0;
+    }
+    .error {
+        color: red;
+    }
+    .error.message {
+        margin-bottom: 1rem;
+    }
+    </style>
 </head>
 <body>
-    <h1>Login</h1>
+
+    <form method="post">
+        <h1>Login</h1>
+        <?php if (isset($errors['general'])) echo '<div class="error message">' . $errors['general'] . '</div>'; ?>
+        <div class="field">
+            <label for="login_username">Username</label>
+            <input type="text" name="username" id="login_username" value="<?php if (isset($values['username'])) echo $values['username']; ?>" />
+            <?php if (isset($errors['username'])) echo '<div class="error">' . $errors['username'] . '</div>'; ?>
+        </div>
+        <div class="field">
+            <label for="login_password">Password</label>
+            <input type="password" name="password" id="login_password" value="<?php if (isset($values['password'])) echo $values['password']; ?>" />
+            <?php if (isset($errors['password'])) echo '<div class="error">' . $errors['password'] . '</div>'; ?>
+        </div>
+        <div class="buttons">
+            <button type="submit">Login</button>
+        </div>
+    </form>
 </body>
 </html>
