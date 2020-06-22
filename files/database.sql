@@ -17,7 +17,6 @@ CREATE TABLE page (
     page_type VARCHAR(32) NOT NULL DEFAULT 'page',
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(128),
-    url VARCHAR(128),
     settings MEDIUMTEXT,
     revision INT NOT NULL DEFAULT 1,
     is_finalized TINYINT(1),
@@ -71,6 +70,7 @@ CREATE TABLE page_menu (
     page_id INT UNSIGNED NOT NULL,
     lft INT,
     rgt INT,
+    url VARCHAR(128),
     is_visible TINYINT(1),
     is_innavigation TINYINT(1),
     created DATETIME NOT NULL,
@@ -85,6 +85,7 @@ CREATE TABLE site (
     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     theme VARCHAR(255) NOT NULL,
+    locale VARCHAR(10) NOT NULL DEFAULT 'en_US'
     created DATETIME NOT NULL,
     modified DATETIME,
     recycled DATETIME
@@ -101,6 +102,7 @@ CREATE TABLE site_has_page (
     page_id INT UNSIGNED NOT NULL,
     lft INT,
     rgt INT,
+    url VARCHAR(128),
     is_visible TINYINT(1),
     is_innavigation TINYINT(1),
     created DATETIME NOT NULL,
