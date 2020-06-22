@@ -21,6 +21,11 @@
 
 - Render pages in frontend
 
+## Version 0.0.6
+
+- Log user actions (create / update / delete)
+- Show log per page
+
 ## Version 0.1.0
 
 - Login
@@ -29,3 +34,5 @@
 - Move pages
 - Move blocks
 - Render pages in frontend
+- Log user actions (create / update / delete)
+- Show log per page
