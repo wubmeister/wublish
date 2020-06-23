@@ -3,6 +3,7 @@
 use Laminas\Diactoros\ServerRequestFactory;
 use App\ViewController\Login;
 use App\ViewController\Logout;
+use App\ViewController\Pages;
 use App\ViewController\Frontend;
 use Laminas\Diactoros\Response\HtmlResponse;
 
@@ -11,6 +12,7 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute([ 'GET', 'POST' ], '/login', Login::class);
     $r->addRoute([ 'GET', 'POST' ], '/logout', Logout::class);
+    $r->addRoute([ 'GET', 'POST' ], '/admin/pages', Pages::class);
     $r->addRoute([ 'GET', 'POST' ], '/', Frontend::class);
 });
 
