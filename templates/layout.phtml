@@ -15,6 +15,10 @@
         <?php else: ?>
             <p>Not logged in <a href="/login">Login</a></p>
         <?php endif; ?>
+
+        <div class="cols">
+            <?php if (isset($pagetree)) echo $pagetree; ?>
+        </div>
     </div>
 </body>
 </html>

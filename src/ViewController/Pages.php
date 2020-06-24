@@ -28,10 +28,16 @@ class Pages
         $pages = Db::fetchAll("SELECT * FROM `page_menu` AS `m`
             LEFT JOIN `page` ON `page`.`id` = `m`.`page_id` ORDER BY `m`.`lft`");
 
+        $pageTree = new Generic("pagetree");
+
         $view = new Generic("layout");
-        return new HtmlResponse($view->getContent([
+        $params = [
             'user' => $user,
-            'pages' => $pages
-        ]));
+            'pagetree' => $pageTree->getContent([
+                'pages' => $pages,
+            ]),
+        ];
+
+        return new HtmlResponse($view->getContent($params));
     }
 }

@@ -1,0 +1,7 @@
+<div class="col-3">
+    <ul>
+    <?php foreach ($pages as $page): ?>
+        <li><a href="/admin/pages/<?php echo $page['id']; ?>"><?php echo $page['title']; ?></a></li>
+    <?php endforeach; ?>
+    </ul>
+</div>
